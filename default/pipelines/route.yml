@@ -1,0 +1,14 @@
+id: default
+groups: {}
+comments: []
+routes:
+  - id: otel-input
+    name: OpenTelemetry (OTLP)
+    final: true
+    disabled: false
+    pipeline: passthru
+    description: "OTLP telemetry from GitHub Copilot Chat"
+    enableOutputExpression: false
+    filter: __inputId=='open_telemetry:cc-edge-copilot-otel.copilot-chat-otel'
+    clones: []
+    output: default
