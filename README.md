@@ -45,6 +45,10 @@ Only one OTLP pack can listen on port 4317 at a time. If you are also running `c
 
 ## Release Notes
 
+### v1.0.1
+
+- Fix: correct `dataType` tags to `["traces"]` — only span extraction is enabled (`extractLogs` and `extractMetrics` are both `false`)
+
 ### v1.0.0
 
 - Initial release
