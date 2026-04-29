@@ -1,6 +1,8 @@
 # cc-edge-copilot-otel
 
-Cribl Edge Pack that receives GitHub Copilot Chat native OpenTelemetry traces, metrics, and events via OTLP gRPC on port 4317, following OpenTelemetry GenAI Semantic Conventions.
+Cribl Edge Pack that receives GitHub Copilot Chat native OpenTelemetry
+traces, metrics, and events via OTLP gRPC on port 4317, following
+OpenTelemetry GenAI Semantic Conventions.
 
 ## Pack Components
 
@@ -42,6 +44,21 @@ Only one OTLP pack can listen on port 4317 at a time. If you are also running `c
 - Verify Copilot Chat OTEL is enabled in VS Code settings
 - Check that port 4317 is not in use by another process
 - Confirm Cribl Edge is running and the pack is installed
+
+## Deployment
+
+Production install onto the homelab Cribl Edge LXCs is automated by the
+`cribl_packs` role in
+[ansible-proxmox-apps](https://github.com/JacobPEvans/ansible-proxmox-apps/tree/main/roles/cribl_packs).
+Pack version is pinned in `roles/cribl_packs/defaults/main.yml`.
+
+To roll out a new release: cut a tag in this repo (publishes the `.crbl`
+asset), bump `version:` for `cc-edge-copilot-otel` in
+`ansible-proxmox-apps/roles/cribl_packs/defaults/main.yml`, then run
+`ansible-playbook playbooks/site.yml --tags cribl_packs` from that repo.
+The role downloads the matching `.crbl`, unpacks it into
+`/opt/cribl/local/edge/packs/cc-edge-copilot-otel/`, and restarts
+`cribl-edge.service` only when the version actually changed.
 
 ## Release Notes
 
