@@ -50,7 +50,7 @@ Only one OTLP pack can listen on port 4317 at a time. If you are also running `c
 Production install onto the homelab Cribl Edge LXCs is automated by the
 `cribl_packs` role in
 [ansible-proxmox-apps](https://github.com/JacobPEvans/ansible-proxmox-apps/tree/main/roles/cribl_packs).
-Pack version is pinned in `roles/cribl_packs/defaults/main.yml`.
+Pack version is pinned in `ansible-proxmox-apps/roles/cribl_packs/defaults/main.yml`.
 
 To roll out a new release: cut a tag in this repo (publishes the `.crbl`
 asset), bump `version:` for `cc-edge-copilot-otel` in
